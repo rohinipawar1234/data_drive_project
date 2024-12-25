@@ -1,0 +1,63 @@
+# Data Drive System
+
+A file management and storage system similar to Google Drive built using Django.
+
+## Features
+
+- **User Authentication**: Users can create accounts and log in.
+- **CRUD Operations**: Users can create, read, update, and delete files and folders.
+- **Folder Hierarchy**: Users can create multiple levels of folders, nested within each other.
+- **File Upload**: Users can upload files to specific folders.
+- **Personalized Dashboard**: Users can view and manage their own files and folders.
+
+## Requirements
+
+- Python 3.x
+- Django 3.x
+- SQLite (or any other database like PostgreSQL)
+- Other dependencies listed in 'requirements.txt'
+
+
+URL Patterns
+
+Folder Operations
+
+1 .Create Folder
+
+URL: /folder/create/
+Method: GET (to display the form) and POST (to submit the form)
+Fields:
+Folder Name: Text input for the folder's name.
+Parent Folder: A dropdown to select a parent folder (optional).
+Logic: Handles folder creation.
+
+
+2. View Folder
+
+URL: /folder/<int:id>/
+Method: GET
+Description: Displays the list of files within the folder, using the folder's ID.
+
+3. Delete Folder
+
+URL: /folder/<int:id>/delete/
+Method: POST
+Logic: Deletes the folder (using the folder's ID) and any files within it.
+
+
+File Operations
+
+1. Upload File
+
+URL: /file/upload/
+Method: GET (to display the form) and POST (to submit the form)
+Fields:
+File Name: Text input for the file's name.
+File: A file input field to upload the actual file.
+Folder: A dropdown to select the folder to upload the file into.
+
+2. Delete File
+
+URL: /file/<int:id>/delete/
+Method: POST
+Logic: Deletes the file (using the file's ID) from the database and the file system.
