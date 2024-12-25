@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<h2>Upload File</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="name">File Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="file_data">Choose File:</label>
+    <input type="file" id="file_data" name="file_data" required>
+
+    <label for="folder_id">Select Folder:</label>
+    <select id="folder_id" name="folder_id">
+        {% for folder in folders %}
+            <option value="{{ folder.id }}">{{ folder.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Upload File</button>
+</form>
+
+<h3>Your Folders:</h3>
+<ul>
+    {% for folder in folders %}
+        <li>{{ folder.name }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

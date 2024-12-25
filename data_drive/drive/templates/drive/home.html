@@ -1,0 +1,25 @@
+{% extends 'drive/base.html' %}
+
+{% block content %}
+<h1>Your Folders</h1>
+<a href="{% url 'create_folder' %}" class="btn btn-primary">Create Folder</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for folder in folders %}
+        <tr>
+            <td>{{ folder.name }}</td>
+            <td>
+                <a href="{% url 'view_folder' folder.id %}" class="btn btn-secondary">View</a>
+                <a href="{% url 'delete_folder' folder.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
